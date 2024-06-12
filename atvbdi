@@ -1,0 +1,30 @@
+CREATE DATABASE produtos;
+USE produtos;
+
+CREATE TABLE produtos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario_adimin VARCHAR(100) NOT NULL,
+  codigo_produtos VARCHAR(50) NOT NULL
+descricao TEXT NOT NULL,
+quantidade INT NOT NULL,
+preco_custo DECIMAL (10,2) NOT NULL,
+margem_lucro DECIMAL (10,2) NOT NULL,
+icms DECIMAL (10,2) NOT NULL,
+ipi DECIMAL (10,2) NOT NULL,
+tipo_produto VARCHAR (100) NOT NULL,
+);
+
+INSERT INTO produtos (usuario_admin, codigo_produto, descricao, quantidade, preco_custo, margem_lucro, icms, tipo_produto) 
+VALUES
+('usuario_admin', 'codigo_produto', 'descricao', 'quantidade', 'preco_custo', 'margem_lucro', 'icms', 'tipo_produto');
+INSERT INTO (usuario_admin, codigo_produto, descricao, quantidade, preco_custo, margem_lucro, icms, tipo_produto)
+VALUES
+('admin', 'PROD001', 'Memoria Ram 2Gb', 100, 105.00, 20.00, 17.00, 5.00, 'Eletrônico'), ('admin', 'PROD002', 'Memoria Ram 4Gb', 100, 185.00, 20.00, 17.00, 5.00, 'Eletrônico'), ('admin', 'PROD003', 'Memoria Ram 8Gb', 100, 250.00, 20.00, 17.00, 5.00, 'Eletrônico'), ('admin', 'PROD004', 'Memoria Ram 16Gb', 100, 305.00, 20.00, 17.00, 5.00, 'Eletrônico"); 
+
+SELECT SUM(quantidade) AS total_quantidade FROM produtos;
+
+SELECT SUM(preco_custo) AS total_preco_custo FROM produtos;
+
+SELECT tipo produto, SUM(quantidade) AS total_quantidade, SUM(preco_custo) AS total_preco_custo
+FROM produtos
+GROUP BY tipo_produto;
